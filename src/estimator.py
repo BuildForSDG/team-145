@@ -58,20 +58,26 @@ def estimator(**data):
         days
     )
 
-    impact = {"currentlyInfected": currentlyInfected,
-              "infectionsByRequestedTime": infectionsByRequestedTime,
-              "severeCasesByRequestedTime": severeCasesByRequestedTime,
-              "hospitalBedsByRequestTime": hospitalBedsByRequestTime,
-              "casesForICUByRequestedTime": casesForICUByRequestedTime,
-              "casesForVentilatorsByRequestTime": casesForVentilatorsByRequestTime,
-              "dollarsInflight": dollarsInFlight}
-    severeImpact = {"currentlyInfected": severeCurrentlyInfected,
-                    "infectionsByRequestedTime": severeInfectionsByRequestedTime,
-                    "severeCasesByRequestedTime": extremeSevereCasesByRequestedTime,
-                    "hospitalBedsByRequestTime": severeHospitalBedsByRequestTime,
-                    "casesForICUByRequestedTime": severeCasesForICUByRequestedTime,
-                    "casesForVentilatorsByRequestTime": severeCasesForVentilatorsByRequestTime,
-                    "dollarsInflight": severeDollarsInFlight}
+    impact = {
+        "currentlyInfected": currentlyInfected,
+        "infectionsByRequestedTime": infectionsByRequestedTime,
+        "severeCasesByRequestedTime": severeCasesByRequestedTime,
+        "hospitalBedsByRequestTime": hospitalBedsByRequestTime,
+        "casesForICUByRequestedTime": casesForICUByRequestedTime,
+        "casesForVentilatorsByRequestTime": casesForVentilatorsByRequestTime,
+        "dollarsInflight": dollarsInFlight
+    }
+
+    severeImpact = {
+        "currentlyInfected": severeCurrentlyInfected,
+        "infectionsByRequestedTime": severeInfectionsByRequestedTime,
+        "severeCasesByRequestedTime": extremeSevereCasesByRequestedTime,
+        "hospitalBedsByRequestTime": severeHospitalBedsByRequestTime,
+        "casesForICUByRequestedTime": severeCasesForICUByRequestedTime,
+        "casesForVentilatorsByRequestTime": severeCasesForVentilatorsByRequestTime,
+        "dollarsInflight": severeDollarsInFlight
+    }
+
     return {"data": data, "impact": impact, "severeImpact": severeImpact}
 
 
