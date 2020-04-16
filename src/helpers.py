@@ -1,5 +1,6 @@
 import math
 
+
 def getDays(duration, figure):
     """returns days"""
     if duration == "month":
@@ -18,3 +19,17 @@ def getInfectionsByTime(currentlyInfected, time):
 def getCurrentlyInfected(reportedCases, isSevere=False):
     estimated = 50 if isSevere else 10
     return reportedCases*estimated
+
+
+def getPercentage(figure, quotient):
+    """returns percentage point"""
+    return figure * quotient
+
+
+def getSeverePositiveCases(infections):
+    return math.trunc(getPercentage(infections, 0.15))
+
+
+def getAvailableHospitalBeds(capacity, cases):
+    availableBeds = getPercentage(capacity, 0.35)
+    return math.trunc(availableBeds-cases)

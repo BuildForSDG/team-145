@@ -1,4 +1,4 @@
-from helpers import getDays, getInfectionsByTime, getCurrentlyInfected
+from helpers import getDays, getInfectionsByTime, getCurrentlyInfected, getSeverePositiveCases, getAvailableHospitalBeds
 
 
 data = {
@@ -26,10 +26,24 @@ def estimator(**data):
     severeInfectionsByRequestedTime = getInfectionsByTime(
         severeCurrentlyInfected, days)
 
+    severeCasesByRequestedTime = getSeverePositiveCases(
+        infectionsByRequestedTime)
+    extremeSevereCasesByRequestedTime = getSeverePositiveCases(
+        severeInfectionsByRequestedTime)
+
+    hospitalBedsByRequestTime = getAvailableHospitalBeds(
+        data['totalHospitalBeds'], severeCasesByRequestedTime)
+    severeHospitalBedsByRequestTime = getAvailableHospitalBeds(
+        data['totalHospitalBeds'], extremeSevereCasesByRequestedTime)
+
     impact = {"currentlyInfected": currentlyInfected,
-              "infectionsByRequestedTime": infectionsByRequestedTime}
+              "infectionsByRequestedTime": infectionsByRequestedTime,
+              "severeCasesByRequestedTime": severeCasesByRequestedTime,
+              "hospitalBedsByRequestTime": hospitalBedsByRequestTime}
     severeImpact = {"currentlyInfected": severeCurrentlyInfected,
-                    "infectionsByRequestedTime": severeInfectionsByRequestedTime}
+                    "infectionsByRequestedTime": severeInfectionsByRequestedTime,
+                    "severeCasesByRequestedTime": extremeSevereCasesByRequestedTime,
+                    "hospitalBedsByRequestTime": severeHospitalBedsByRequestTime}
     return {"data": data, "impact": impact, "severeImpact": severeImpact}
 
 
