@@ -33,3 +33,16 @@ def getSeverePositiveCases(infections):
 def getAvailableHospitalBeds(capacity, cases):
     availableBeds = getPercentage(capacity, 0.35)
     return math.trunc(availableBeds-cases)
+
+
+def getCasesForICU(infections):
+    return math.trunc(getPercentage(infections, 0.05))
+
+
+def getCasesForVentilators(infections):
+    return math.trunc(getPercentage(infections, 0.02))
+
+
+def getEconomicImpact(infections, workingPopulation, dailyIncome, period):
+    result = (infections*workingPopulation*dailyIncome)/period
+    return math.trunc(result)
