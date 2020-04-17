@@ -73,6 +73,3 @@ def estimator(**data):
                     "casesForVentilatorsByRequestTime": severeCasesForVentilatorsByRequestTime,
                     "dollarsInflight": severeDollarsInFlight}
     return {"data": data, "impact": impact, "severeImpact": severeImpact}
-
-
-print(estimator(**data))
